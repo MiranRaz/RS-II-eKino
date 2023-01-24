@@ -1,4 +1,6 @@
-﻿using eKino.Services;
+﻿using eKino.Model;
+using eKino.Services.Database;
+using eKino.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.Controllers

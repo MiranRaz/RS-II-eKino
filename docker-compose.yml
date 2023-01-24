@@ -1,0 +1,36 @@
+version: '3'
+services:
+#mssql docker
+  ekinomssql:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    restart: unless-stopped
+    environment:
+      - SA_PASSWORD=admin!
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Developer
+    ports:
+      - 1433:1433
+    expose:
+      - 1433
+    networks:
+      - ekinonet
+
+  ekinoapi:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=ekinomssql,1433;Database=eKino;User=sa;Password=admin;ConnectRetryCount=0
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5000:80
+    networks:
+      - ekinonet
+    links:
+      - ekinomssql
+    depends_on:
+      - ekinomssql
+      
+networks:
+  ekinonet:
+    driver: bridge      
