@@ -4,27 +4,11 @@ using eKino.Services.Interfaces;
 
 namespace eKino.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class UserController : BaseController<Model.User, object>
     {
-        private readonly iUserService _service;
-
-        public UserController(iUserService userService)
+        public UserController(iUserService service)
+        :base(service)
         {
-            _service = userService;
         }
-
-        [HttpGet]
-        public IEnumerable<User> Get()
-        {
-            return _service.Get();
-        }
-
-        //[HttpGet("{id}")]
-        //public Model.User GetByID(int id)
-        //{
-        //    return _service.GetByID(id);
-        //}
     }
 }

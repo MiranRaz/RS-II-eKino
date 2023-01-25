@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace eKino.Services.Interfaces
 {
-    public interface iUserService : iService<User,object>
+    public interface iService<T, TSearch> where T : class where TSearch : class
     {
-
+        IEnumerable<T> Get(TSearch? search = null);
+        T GetByID(int id);
     }
 }

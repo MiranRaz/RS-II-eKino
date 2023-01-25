@@ -9,30 +9,13 @@ using System.Threading.Tasks;
 
 namespace eKino.Services.Services
 {
-    public class UserService : iUserService
+    public class UserService : BaseService<Model.User, Database.User, object>, iUserService
     {
-        public eKinoContext Context { get; set; }
-        public IMapper Mapper { get; set; }
 
         public UserService(eKinoContext context, IMapper mapper)
+        :base(context, mapper)
         {
-            Context = context;
-            Mapper = mapper;
         }
 
-        public IEnumerable<Model.User> Get()
-        {
-            List<Model.User> list = new List<Model.User>();
-            var result = Context.Users.ToList();
-
-            return Mapper.Map<List<Model.User>>(result);
-        }
-
-        //public Model.User GetByID(int id)
-        //{
-        //    var result = Context.Users.Find(id);
-
-        //    return Mapper.Map<List<Model.User>>(result);
-        //}
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eKino.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace eKino.Services
             CreateMap<Database.User, Model.User>();
             CreateMap<Database.Movie, Model.Movies>();
             CreateMap<Database.Director, Model.Director>();
+
+            CreateMap<MoviesInsertRequest, Database.Movie>();
+            CreateMap<MoviesUpdateRequest, Database.Movie>();
         }
     }
 }

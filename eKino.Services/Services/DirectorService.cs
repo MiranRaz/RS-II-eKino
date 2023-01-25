@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eKino.Model;
+using eKino.Model.SearchObjects;
 using eKino.Services.Database;
 using eKino.Services.Interfaces;
 using System;
@@ -10,30 +11,28 @@ using System.Threading.Tasks;
 
 namespace eKino.Services.Services
 {
-    public class DirectorService : iDirectorService
+    public class DirectorService : BaseService<Model.Director,Database.Director, DirectorSearchObject>,  iDirectorService
     {
-        public eKinoContext Context { get; set; }
-        public IMapper Mapper { get; set; }
-
         public DirectorService(eKinoContext context, IMapper mapper)
+            : base(context,mapper)
         {
-            Context = context;
-            Mapper = mapper;
         }
 
-
-        public IEnumerable<Model.Director> Get()
+        public override IQueryable<Database.Director> AddFilter(IQueryable<Database.Director> query, DirectorSearchObject? search = null)
         {
-            var result = Context.Directors.ToList();
+            var filteredQuery = base.AddFilter(query, search);
 
-            return Mapper.Map<List<Model.Director>>(result);
+            if (!string.IsNullOrWhiteSpace(search?.Name))
+            {
+                filteredQuery = filteredQuery.Where(x => x.FullName == search.Name);
+            }
+
+            if(search?.DirectorID.HasValue == true)
+            {
+                filteredQuery = filteredQuery.Where(x => x.DirectorId == search.DirectorID);
+            }
+
+            return filteredQuery;
         }
-
-        public Model.Director GetByID(int id)
-        {
-            var result = Context.Directors.Find(id);
-            return Mapper.Map<Model.Director>(result);
-        }
-
     }
 }

@@ -1,4 +1,6 @@
 ﻿using eKino.Model;
+using eKino.Model.SearchObjects;
+using eKino.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace eKino.Services.Interfaces
 {
-    public interface iDirectorService
+    public interface iDirectorService : iService<Director, DirectorSearchObject>
     {
-        IEnumerable<Director> Get();
-        Director GetByID(int id);
+        
     }
 }
