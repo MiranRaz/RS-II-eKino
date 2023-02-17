@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace eKino.Model
 {
@@ -16,9 +15,9 @@ namespace eKino.Model
         public string Username { get; set; } 
         public bool Status { get; set; }
 
-        //public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
 
-        //public string RoleNames => string.Join(", ", UserRoles?.Select(x => x.Role?.Name)?.ToList());
+        public string RoleNames => string.Join(", ", UserRoles?.Select(x => x.Role?.Name)?.ToList());
 
         public override string ToString()
         {

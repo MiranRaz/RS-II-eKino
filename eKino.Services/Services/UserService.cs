@@ -4,6 +4,7 @@ using eKino.Model.Requests;
 using eKino.Model.SearchObjects;
 using eKino.Services.Database;
 using eKino.Services.Interfaces;
+using eKino.Services.Utils;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -77,12 +78,12 @@ namespace eKino.Services.Services
             if (entity != null)
             {
                 Mapper.Map(update, entity);
-                //if (!string.IsNullOrEmpty(update.Password))
-                //{
-                //    var salt = Hashing.GenerateSalt();
-                //    entity.PasswordSalt = salt;
-                //    entity.PasswordHash = Hashing.GenerateHash(salt, update.Password) ?? "";
-                //}
+                if (!string.IsNullOrEmpty(update.Password))
+                {
+                    var salt = Hashing.GenerateSalt();
+                    entity.PasswordSalt = salt;
+                    entity.PasswordHash = Hashing.GenerateHash(salt, update.Password) ?? "";
+                }
 
                 if (update.RoleIdList != null)
                 {
@@ -120,10 +121,10 @@ namespace eKino.Services.Services
 
         public override void BeforeInsert(UserInsertRequest insert, Database.User entity)
         {
-            //var salt = Hashing.GenerateSalt();
-            //entity.PasswordSalt = salt;
-            //entity.PasswordHash = Hashing.GenerateHash(salt, insert.Password) ?? "";
-            //base.BeforeInsert(insert, entity);
+            var salt = Hashing.GenerateSalt();
+            entity.PasswordSalt = salt;
+            entity.PasswordHash = Hashing.GenerateHash(salt, insert.Password) ?? "";
+            base.BeforeInsert(insert, entity);
         }
 
 
@@ -162,12 +163,12 @@ namespace eKino.Services.Services
                 return null;
             }
 
-            //var hash = Hashing.GenerateHash(entity.PasswordSalt, password);
+            var hash = Hashing.GenerateHash(entity.PasswordSalt, password);
 
-            //if (hash != entity.PasswordHash)
-            //{
-            //    return null;
-            //}
+            if (hash != entity.PasswordHash)
+            {
+                return null;
+            }
 
             return Mapper.Map<Model.User>(entity);
         }

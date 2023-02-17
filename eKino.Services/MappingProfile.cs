@@ -15,11 +15,15 @@ namespace eKino.Services
             CreateMap<Database.User, Model.User>();
             CreateMap<Database.Movie, Model.Movies>();
             CreateMap<Database.Director, Model.Director>();
+            CreateMap<Database.Auditorium, Model.Auditorium>();
+            CreateMap<Database.Genre, Model.Genre>();
 
             CreateMap<MoviesUpsertRequest, Database.Movie>();
             CreateMap<DirectorUpsertRequest, Database.Director>();
             CreateMap<UserInsertRequest, Database.User>();
             CreateMap<UserUpdateRequest, Database.User>();
+            CreateMap<AuditoriumUpsertRequest, Database.Auditorium>();
+            CreateMap<GenreUpsertRequest, Database.Genre>();
         }
     }
 }

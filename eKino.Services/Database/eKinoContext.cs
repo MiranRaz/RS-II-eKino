@@ -120,11 +120,11 @@ namespace eKino.Services.Database
 
                 entity.Property(e => e.MovieId).HasColumnName("MovieID");
 
-                entity.HasOne(d => d.Genre)
-                    .WithMany(p => p.MovieGenres)
-                    .HasForeignKey(d => d.GenreId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_MovieGenre_Genre");
+                //entity.HasOne(d => d.Genre)
+                //    .WithMany(p => p.MovieGenres)
+                //    .HasForeignKey(d => d.GenreId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_MovieGenre_Genre");
 
                 entity.HasOne(d => d.Movie)
                     .WithMany(p => p.MovieGenres)
@@ -149,11 +149,11 @@ namespace eKino.Services.Database
 
                 entity.Property(e => e.TicketPrice).HasColumnType("decimal(10, 2)");
 
-                entity.HasOne(d => d.Auditorium)
-                    .WithMany(p => p.Projections)
-                    .HasForeignKey(d => d.AuditoriumId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Projection_Auditorium");
+                //entity.HasOne(d => d.Auditorium)
+                //    .WithMany(p => p.Projections)
+                //    .HasForeignKey(d => d.AuditoriumId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Projection_Auditorium");
 
                 entity.HasOne(d => d.Movie)
                     .WithMany(p => p.Projections)

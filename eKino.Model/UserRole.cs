@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace eKino.Services.Database
+namespace eKino.Model
 {
     public partial class UserRole
     {
@@ -9,8 +10,6 @@ namespace eKino.Services.Database
         public int UserId { get; set; }
         public int RoleId { get; set; }
         public DateTime DateModified { get; set; }
-
-        public virtual User User { get; set; } = null!;
-        public virtual Role Role { get; set; } = null!;
+        public virtual Role Role { get; set; }
     }
 }
