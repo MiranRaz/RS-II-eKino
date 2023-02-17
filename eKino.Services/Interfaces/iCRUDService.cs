@@ -10,6 +10,6 @@ namespace eKino.Services.Interfaces
     {
         T Insert(TInsert insert);
 
-        T Update(int id, TUpdate update);
+        T? Update(int id, TUpdate update);
     }
 }

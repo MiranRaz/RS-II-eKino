@@ -16,13 +16,13 @@ namespace eKino.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<T> Get([FromQuery]TSearch search=null)
+        public virtual IEnumerable<T> Get([FromQuery]TSearch search=null)
         {
-            return Service.Get();
+            return Service.Get(search);
         }
 
         [HttpGet("{id}")]
-        public T GetByID(int id)
+        public virtual T GetByID(int id)
         {
             return Service.GetByID(id);
         }

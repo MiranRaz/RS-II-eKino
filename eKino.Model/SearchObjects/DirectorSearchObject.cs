@@ -4,9 +4,9 @@ using System.Text;
 
 namespace eKino.Model.SearchObjects
 {
-    public class DirectorSearchObject
+    public class DirectorSearchObject : BaseSearchObject
     {
-        public string Name { get; set; }
         public int? DirectorID { get; set; }
+        public string Name { get; set; }
     }
 }

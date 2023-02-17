@@ -182,11 +182,11 @@ namespace eKino.Services.Database
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Rating_Movie");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Ratings)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Rating_User");
+                //entity.HasOne(d => d.User)
+                //    .WithMany(p => p.Ratings)
+                //    .HasForeignKey(d => d.UserId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Rating_User");s
             });
 
             modelBuilder.Entity<Reservation>(entity =>
@@ -215,11 +215,11 @@ namespace eKino.Services.Database
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Reservation_Projection");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Reservations)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Reservation_User");
+                //entity.HasOne(d => d.User)
+                //    .WithMany(p => p.Reservations)
+                //    .HasForeignKey(d => d.UserId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Reservation_User");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -255,11 +255,11 @@ namespace eKino.Services.Database
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Transaction_Reservation");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Transactions)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Transaction_User");
+                //entity.HasOne(d => d.User)
+                //    .WithMany(p => p.Transactions)
+                //    .HasForeignKey(d => d.UserId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Transaction_User");
             });
 
             modelBuilder.Entity<User>(entity =>

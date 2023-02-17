@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using eKino.Model.SearchObjects;
 
 namespace eKino.Services.Services
 {
-    public class BaseService<T, TDb, TSearch> : iService<T, TSearch> where T : class where TDb : class where TSearch : class
+    public class BaseService<T, TDb, TSearch> : iService<T, TSearch> where T : class where TDb : class where TSearch : BaseSearchObject
     {
         public eKinoContext Context { get; set; }
         public IMapper Mapper { get; set; }
@@ -20,17 +21,29 @@ namespace eKino.Services.Services
             Mapper = mapper;
         }
 
-        public IEnumerable<T> Get(TSearch? search = null)
+        public virtual IEnumerable<T> Get(TSearch search = null)
         {
             var entity = Context.Set<TDb>().AsQueryable();
 
             entity = AddFilter(entity, search);
 
-            var list = entity.ToList();
+            entity = AddInclude(entity, search);
 
-            return Mapper.Map<IEnumerable<T>>(list);
+            if (search?.Page.HasValue == true && search?.PageSize.HasValue == true)
+            {
+                entity = entity.Skip(search.Page.Value * search.PageSize.Value).Take(search.PageSize.Value);
+            }
+
+            var list = entity.ToList();
+            //NOTE: elaborate IEnumerable vs IList
+            return Mapper.Map<IList<T>>(list);
+        }
+        public virtual IQueryable<TDb> AddInclude(IQueryable<TDb> query, TSearch search = null)
+        {
+            return query;
         }
 
+        
         public virtual IQueryable<TDb> AddFilter(IQueryable<TDb> query, TSearch? search = null)
         {
             return query;
@@ -42,5 +55,6 @@ namespace eKino.Services.Services
 
             return Mapper.Map<T>(entity);
         }
+
     }
 }

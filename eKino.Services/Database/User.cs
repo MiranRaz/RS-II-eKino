@@ -7,9 +7,6 @@ namespace eKino.Services.Database
     {
         public User()
         {
-            Ratings = new HashSet<Rating>();
-            Reservations = new HashSet<Reservation>();
-            Transactions = new HashSet<Transaction>();
             UserRoles = new HashSet<UserRole>();
         }
 
@@ -21,11 +18,8 @@ namespace eKino.Services.Database
         public string Username { get; set; } = null!;
         public string PasswordHash { get; set; } = null!;
         public string PasswordSalt { get; set; } = null!;
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
 
-        public virtual ICollection<Rating> Ratings { get; set; }
-        public virtual ICollection<Reservation> Reservations { get; set; }
-        public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

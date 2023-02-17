@@ -13,7 +13,10 @@ namespace eKino.Model
         public string RunningTime { get; set; }
         public byte[] Photo { get; set; }
         public int DirectorId { get; set; }
-
+        public override string ToString()
+        {
+            return Title;
+        }
         //public virtual Director Director { get; set; } = null!;
         //public virtual ICollection<MovieGenre> MovieGenres { get; set; }
         //public virtual ICollection<Projection> Projections { get; set; }

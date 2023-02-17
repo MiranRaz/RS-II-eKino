@@ -16,9 +16,13 @@ namespace eKino.Model
         public string Username { get; set; } 
         public bool Status { get; set; }
 
-        //public virtual ICollection<Rating> Ratings { get; set; }
-        //public virtual ICollection<Reservation> Reservations { get; set; }
-        //public virtual ICollection<Transaction> Transactions { get; set; }
         //public virtual ICollection<UserRole> UserRoles { get; set; }
+
+        //public string RoleNames => string.Join(", ", UserRoles?.Select(x => x.Role?.Name)?.ToList());
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
     }
 }

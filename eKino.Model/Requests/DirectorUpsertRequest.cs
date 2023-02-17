@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace eKino.Model
+namespace eKino.Model.Requests
 {
-    public partial class Director
+    public class DirectorUpsertRequest
     {
-        public int DirectorId { get; set; }
+        [Required(AllowEmptyStrings = false)]
         public string FullName { get; set; }
         public string Biography { get; set; }
         public byte[] Photo { get; set; }
-        public override string ToString()
-        {
-            return FullName;
-        }
     }
 }

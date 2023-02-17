@@ -9,13 +9,13 @@ namespace eKino.Controllers
         public BaseCRUDController(iCRUDService<T,TSearch,TInsert,TUpdate> service) : base(service) { }
 
         [HttpPost]
-        public T Insert ([FromBody] TInsert insert)
+        public virtual T Insert ([FromBody] TInsert insert)
         {
             var result = ((iCRUDService<T, TSearch, TInsert, TUpdate>)this.Service).Insert(insert);
             return result;
         }
         [HttpPut("{id}")]
-        public T Update(int id,[FromBody] TUpdate update)
+        public virtual T Update(int id,[FromBody] TUpdate update)
         {
             var result = ((iCRUDService<T, TSearch, TInsert, TUpdate>)this.Service).Update(id, update);
             return result;

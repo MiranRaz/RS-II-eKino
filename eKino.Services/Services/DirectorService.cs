@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eKino.Model;
+using eKino.Model.Requests;
 using eKino.Model.SearchObjects;
 using eKino.Services.Database;
 using eKino.Services.Interfaces;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace eKino.Services.Services
 {
-    public class DirectorService : BaseService<Model.Director,Database.Director, DirectorSearchObject>,  iDirectorService
+    public class DirectorService : BaseCRUDService<Model.Director,Database.Director, DirectorSearchObject, DirectorUpsertRequest, DirectorUpsertRequest>,  iDirectorService
     {
         public DirectorService(eKinoContext context, IMapper mapper)
             : base(context,mapper)

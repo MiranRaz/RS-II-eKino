@@ -1,4 +1,5 @@
 ﻿using eKino.Model;
+using eKino.Model.Requests;
 using eKino.Model.SearchObjects;
 using eKino.Services.Interfaces;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace eKino.Services.Interfaces
 {
-    public interface iDirectorService : iService<Director, DirectorSearchObject>
+    public interface iDirectorService : iCRUDService<Director, DirectorSearchObject, DirectorUpsertRequest, DirectorUpsertRequest>
     {
         
     }

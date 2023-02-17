@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eKino.Controllers
 {
-    public class MoviesController : BaseCRUDController<Model.Movies, MovieSearchObject,MoviesInsertRequest, MoviesUpdateRequest>
+    public class MoviesController : BaseCRUDController<Model.Movies, MovieSearchObject, MoviesUpsertRequest, MoviesUpsertRequest>
     {
         public MoviesController(iMoviesService service)
             :base(service)

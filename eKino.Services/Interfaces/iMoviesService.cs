@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace eKino.Services.Interfaces
 {
-    public interface iMoviesService : iCRUDService<Movies, MovieSearchObject, MoviesInsertRequest, MoviesUpdateRequest>
+    public interface iMoviesService : iCRUDService<Movies, MovieSearchObject, MoviesUpsertRequest, MoviesUpsertRequest>
     {
        
     }

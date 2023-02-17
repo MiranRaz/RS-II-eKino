@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace eKino.Services.Services
 {
-    public class MoviesService : BaseCRUDService<Model.Movies, Database.Movie, MovieSearchObject, MoviesInsertRequest, MoviesUpdateRequest>, iMoviesService
+    public class MoviesService : BaseCRUDService<Model.Movies, Database.Movie, MovieSearchObject, MoviesUpsertRequest, MoviesUpsertRequest>, iMoviesService
     {
         public MoviesService(eKinoContext context, IMapper mapper)
             :base(context, mapper)

@@ -16,8 +16,10 @@ namespace eKino.Services
             CreateMap<Database.Movie, Model.Movies>();
             CreateMap<Database.Director, Model.Director>();
 
-            CreateMap<MoviesInsertRequest, Database.Movie>();
-            CreateMap<MoviesUpdateRequest, Database.Movie>();
+            CreateMap<MoviesUpsertRequest, Database.Movie>();
+            CreateMap<DirectorUpsertRequest, Database.Director>();
+            CreateMap<UserInsertRequest, Database.User>();
+            CreateMap<UserUpdateRequest, Database.User>();
         }
     }
 }
